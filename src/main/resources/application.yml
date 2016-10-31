@@ -1,0 +1,30 @@
+server:
+  port: 8888
+
+logging:
+  level:
+    org.springframework.cloud: 'DEBUG'
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/harshahst/sports-properties.git
+          searchPaths: "*"
+          repos:
+            team-m:
+              pattern: billing-service*, security-*
+              uri: https://github.com/harshahst/team-m.git
+              searchPaths: "*"
+            team-n:
+              pattern: audit*
+              uri: https://github.com/harshahst/team-n.git
+              searchPaths: "*"
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: config_client
+    password: cfgpassword
